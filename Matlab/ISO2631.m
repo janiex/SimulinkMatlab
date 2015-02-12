@@ -101,7 +101,6 @@ switch type
     %filter the input vector 'signal' with the with the filter described by 
     %numerator coefficient vector numf and denominator coefficient vector dendf.
     filtered = filter(numdf,dendf,signal);
-    plot(filtered);
     %frequency response vector h and the corresponding angular frequency 
     %vector w for the digital filter whose transfer function is determined 
     %by the (real or complex) numerator and denominator polynomials 
