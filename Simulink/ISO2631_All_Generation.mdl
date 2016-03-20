@@ -19,7 +19,7 @@ Model {
       Name		      "FilterOut"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.43"
+    ComputedModelVersion    "1.44"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -39,9 +39,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Kristian"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Sep 06 12:58:08 2014"
-  RTWModifiedTimeStamp	  331909044
-  ModelVersionFormat	  "1.%<AutoIncrement:43>"
+  LastModifiedDate	  "Sun Mar 20 12:08:31 2016"
+  RTWModifiedTimeStamp	  380376501
+  ModelVersionFormat	  "1.%<AutoIncrement:44>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -327,20 +327,20 @@ Model {
 	Simulink.HardwareCC {
 	  $ObjectID		  6
 	  Version		  "1.10.0"
-	  ProdBitPerChar	  8
+	  ProdBitPerChar	  16
 	  ProdBitPerShort	  16
-	  ProdBitPerInt		  32
+	  ProdBitPerInt		  16
 	  ProdBitPerLong	  32
 	  ProdBitPerFloat	  32
 	  ProdBitPerDouble	  64
-	  ProdBitPerPointer	  32
-	  ProdLargestAtomicInteger "Char"
+	  ProdBitPerPointer	  16
+	  ProdLargestAtomicInteger "Integer"
 	  ProdLargestAtomicFloat  "None"
-	  ProdIntDivRoundTo	  "Undefined"
-	  ProdEndianess		  "Unspecified"
-	  ProdWordSize		  32
+	  ProdIntDivRoundTo	  "Zero"
+	  ProdEndianess		  "LittleEndian"
+	  ProdWordSize		  16
 	  ProdShiftRightIntArith  on
-	  ProdHWDeviceType	  "32-bit Generic"
+	  ProdHWDeviceType	  "Texas Instruments->C2000"
 	  TargetBitPerChar	  8
 	  TargetBitPerShort	  16
 	  TargetBitPerInt	  32
@@ -666,8 +666,8 @@ Model {
       }
       Name		      "Configuration"
       ExtraOptions	      "-aGenerateTraceInfo=0 -aIgnoreTestpoints=0 "
-      CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition    " [ 243, 69, 1123, 699 ] "
+      CurrentDlgPage	      "Simulation Target"
+      ConfigPrmDlgPosition    " [ 243, 15, 1275, 645 ] "
     }
     PropName		    "ConfigurationSets"
   }
@@ -814,7 +814,7 @@ Model {
   }
   System {
     Name		    "ISO2631_All_Generation"
-    Location		    [2, 82, 1348, 693]
+    Location		    [2, 74, 1364, 685]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -826,7 +826,7 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "100"
+    ZoomFactor		    "159"
     ReportName		    "simulink-default.rpt"
     SIDHighWatermark	    "81"
     Block {
