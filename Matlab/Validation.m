@@ -21,11 +21,11 @@ Coefficients = zeros(8,1);
 % This is the indexes of the report written, at later phase.
 Coefficients={Wk_Index, Wd_Index, Wf_Index,Wc_Index,We_Index,Wj_Index};
 InputFilters = {Wk_input, Wd_input, Wf_input, Wc_input, We_input, Wj_input};
-Amp = 0.5; % Amplitude of the test signal
-xlsdata = xlsread('ISO2631.xlsx',1);
+Amp = 1; % Amplitude of the test signal
+xlsdata = xlsread('ISO2631_simplified.xlsx',1);
 %[num, txt, raw] = xlsread('ISO2631.xlsx',1);
 
-FinalFile = zeros(44,20);
+FinalFile = zeros(28,20);
 % number of iterations
 it = length(InputFilters);
 %*************************************************
@@ -74,9 +74,68 @@ for count=1:it
             FinalFile(i,(position+2)) = (abs(FinalFile(i,(position+1))-FinalFile(i,(position))))/FinalFile(i,(position+1));    
             FinalFile(i,(position+2)) = FinalFile(i,(position+2)) * 100;
         end;
-    end;
-  	Column_names_str = {'Freq [Hz]','Wk-Processed','Wk-Analitical','Wk-Error','Wd-Processed','Wd-Analitical','Wd-Error','Wf-Processed','Wf-Analitical','Wf-Error','Freq [Hz]','Wc-Processed','Wc-Analitical','Wc-Error','We-Processed','We-Analitical','We-Error','Wj-Processed','Wj-Analitical','Wj-Error'};
+    end;  
+end;
+Column_names_str = {'Freq [Hz]','Wk-Processed','Wk-Analitical','Wk-Error','Wd-Processed','Wd-Analitical','Wd-Error','Wf-Processed','Wf-Analitical','Wf-Error','Freq [Hz]','Wc-Processed','Wc-Analitical','Wc-Error','We-Processed','We-Analitical','We-Error','Wj-Processed','Wj-Analitical','Wj-Error'};
     %output_matrix = [Column_names_str; FinalFile];
     xlswrite('NewTestReport.xlsx',Column_names_str,'A1:T1'); 
     xlswrite('NewTestReport.xlsx',FinalFile,'A2:T45');
-end;
+    Frequn = FinalFile(1:28,1);
+    Frequn1 = FinalFile(1:22,11);
+    Wk_Error = FinalFile(1:28,4);
+    Wd_Error = FinalFile(1:28,7);
+    Wf_Error = FinalFile(1:28,10);
+    Wc_Error = FinalFile(1:22,14);
+    We_Error = FinalFile(1:22,17);
+    Wj_Error = FinalFile(1:22,20);
+    
+    figure
+    %----------------------------------------
+    %         +++ Wk Error +++
+    %----------------------------------------
+    subplot(2,3,1)
+    plot(Frequn,Wk_Error)
+    title('Error of Wk(Frequency)')
+    xlabel('Frequency [Hz]') % x-axis label
+    ylabel('Wk Error[%]') % y-axis label
+    %----------------------------------------
+    %         +++ Wd Error +++
+    %----------------------------------------
+    subplot(2,3,2)
+    plot(Frequn,Wd_Error)
+    title('Error of Wd(Frequency)')
+    xlabel('Frequency [Hz]') % x-axis label
+    ylabel('Wd Error[%]') % y-axis label
+    %----------------------------------------
+    %         +++ Wf Error +++
+    %----------------------------------------
+    subplot(2,3,3)
+    plot(Frequn,Wf_Error)
+    title('Error of Wf(Frequency)')
+    xlabel('Frequency [Hz]') % x-axis label
+    ylabel('Wf Error[%]') % y-axis label
+    %----------------------------------------
+    %         +++ Wc Error +++
+    %----------------------------------------
+    subplot(2,3,4)
+    plot(Frequn1,Wc_Error)
+    title('Error of Wc(Frequency)')
+    xlabel('Frequency [Hz]') % x-axis label
+    ylabel('Wc Error[%]') % y-axis label
+   %----------------------------------------
+    %         +++ We Error +++
+    %----------------------------------------
+    subplot(2,3,5)
+    plot(Frequn1,We_Error)
+    title('Error of We(Frequency)')
+    xlabel('Frequency [Hz]') % x-axis label
+    ylabel('We Error[%]') % y-axis label
+
+    %----------------------------------------
+    %         +++ Wj Error +++
+    %----------------------------------------
+    subplot(2,3,6)
+    plot(Frequn1,Wj_Error)
+    title('Error of Wj(Frequency)')
+    xlabel('Frequency [Hz]') % x-axis label
+    ylabel('Wj Error[%]') % y-axis label
