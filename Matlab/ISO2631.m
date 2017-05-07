@@ -1,4 +1,4 @@
-function filtered=iso2631(signal,type,fs)
+function filtered=ISO2631(signal,type,fs)
 %--------------------------------------------------------------------------
 %This function calculate frequency weights according to ISO 2631-1
 %and return the frequency weighted accelerations.

@@ -19,25 +19,25 @@ y = chirp(t,fo,10,f1)';
 plot(t,y');
 MyInput = y';
 InputSignal = cat(2,t',y);
-FilteredSignal = iso2631(y,1,Fs);
+FilteredSignal = ISO2631(y,1,Fs);
 Kristian = FilteredSignal'; 
 plot(FilteredSignal);
 grid on;
 Freq = w/2*pi;
 semilogx(Freq,20*log10(hn),'m');hold on;
-FilteredSignal = iso2631(y,2,Fs);
+FilteredSignal = ISO2631(y,2,Fs);
 Freq = w/2*pi;
 semilogx(Freq,20*log10(hn),'c');
-FilteredSignal = iso2631(y,3,Fs);
+FilteredSignal = ISO2631(y,3,Fs);
 Freq = w/2*pi;
 semilogx(Freq,20*log10(hn),'r');
-FilteredSignal = iso2631(y,4,Fs);
+FilteredSignal = ISO2631(y,4,Fs);
 Freq = w/2*pi;
 semilogx(Freq,20*log10(hn),'g');
-FilteredSignal = iso2631(y,5,Fs);
+FilteredSignal = ISO2631(y,5,Fs);
 Freq = w/2*pi;
 semilogx(Freq,20*log10(hn),'b');
-FilteredSignal = iso2631(y,6,Fs);
+FilteredSignal = ISO2631(y,6,Fs);
 Freq = w/2*pi;
 semilogx(Freq,20*log10(hn),'k');
 %-------------------- BS 6841-----------------------------
@@ -52,10 +52,10 @@ semilogx(Freq,20*log10(hn),'-.k');
 
 
 hleg1 = legend('Wk','Wd','Wf','Wc','We','Wj','Wb','Wg');
-title('Теглови Честотни Предавателни Функции за ISO2631 and BS6841');
+title('ISO2631 weightening frequency transfer functions');
 axis([0.01 1000 -30 10]);
-xlabel('Честота (Hz)');
-ylabel('Усилване (dB)');
+xlabel('Frequency (Hz)');
+ylabel('Gain (dB)');
 grid on;
 hold off;
 

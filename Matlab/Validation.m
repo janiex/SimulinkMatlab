@@ -56,7 +56,7 @@ for count=1:it
         Fs = f*100;                   % Sampling frequency
         t = 0:1/Fs:200*T;             % Form the time window
         sig = Amp*sin(2*pi*f*t);      % Form the signal
-        temp = iso2631(sig,count,Fs);     % Filter the signal with iso2631 filter
+        temp = ISO2631(sig,count,Fs);     % Filter the signal with iso2631 filter
      
         %*************************************************
         % First write calculated by ISO2631 filter RMS

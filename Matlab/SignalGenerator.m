@@ -17,7 +17,7 @@ figure(1);
 plot(t,y);
 ylabel ('Amplitude');
 xlabel ('Time Index');
-TITLE ('Sine wave');
+title ('Sine wave');
 % NFFT = 2^nextpow2(L); % Next power of 2 from length of y
 % Y = fft(y,NFFT)/L;
 % f_fft = Fs/2*linspace(0,1,NFFT/2+1);
