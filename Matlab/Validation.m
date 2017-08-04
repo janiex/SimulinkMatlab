@@ -93,7 +93,8 @@ Column_names_str = {'Freq [Hz]','Wk-Processed','Wk-Analitical','Wk-Error','Wd-Pr
     %----------------------------------------
     %         +++ Wk Error +++
     %----------------------------------------
-    subplot(2,3,1)
+    % subplot(2,3,1)
+    figure % opens new figure window
     plot(Frequn,Wk_Error)
     title('Error of Wk(Frequency)')
     xlabel('Frequency [Hz]') % x-axis label
@@ -101,7 +102,8 @@ Column_names_str = {'Freq [Hz]','Wk-Processed','Wk-Analitical','Wk-Error','Wd-Pr
     %----------------------------------------
     %         +++ Wd Error +++
     %----------------------------------------
-    subplot(2,3,2)
+    % subplot(2,3,2)
+    figure % opens new figure window
     plot(Frequn,Wd_Error)
     title('Error of Wd(Frequency)')
     xlabel('Frequency [Hz]') % x-axis label
@@ -109,7 +111,8 @@ Column_names_str = {'Freq [Hz]','Wk-Processed','Wk-Analitical','Wk-Error','Wd-Pr
     %----------------------------------------
     %         +++ Wf Error +++
     %----------------------------------------
-    subplot(2,3,3)
+    % subplot(2,3,3)
+    figure % opens new figure window
     plot(Frequn,Wf_Error)
     title('Error of Wf(Frequency)')
     xlabel('Frequency [Hz]') % x-axis label
@@ -117,15 +120,17 @@ Column_names_str = {'Freq [Hz]','Wk-Processed','Wk-Analitical','Wk-Error','Wd-Pr
     %----------------------------------------
     %         +++ Wc Error +++
     %----------------------------------------
-    subplot(2,3,4)
+    % subplot(2,3,4)
+    figure % opens new figure window
     plot(Frequn1,Wc_Error)
     title('Error of Wc(Frequency)')
     xlabel('Frequency [Hz]') % x-axis label
     ylabel('Wc Error[%]') % y-axis label
-   %----------------------------------------
+    %----------------------------------------
     %         +++ We Error +++
     %----------------------------------------
-    subplot(2,3,5)
+    % subplot(2,3,5)
+    figure % opens new figure window
     plot(Frequn1,We_Error)
     title('Error of We(Frequency)')
     xlabel('Frequency [Hz]') % x-axis label
@@ -134,7 +139,8 @@ Column_names_str = {'Freq [Hz]','Wk-Processed','Wk-Analitical','Wk-Error','Wd-Pr
     %----------------------------------------
     %         +++ Wj Error +++
     %----------------------------------------
-    subplot(2,3,6)
+    % subplot(2,3,6)
+    figure % opens new figure window
     plot(Frequn1,Wj_Error)
     title('Error of Wj(Frequency)')
     xlabel('Frequency [Hz]') % x-axis label

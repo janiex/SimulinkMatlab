@@ -1,62 +1,84 @@
-clear all
-clc
-global w;
-global hn;
-NmbrOfElements = 6;
+
+%----- Axes in ISO2631 -------------------------------
 %TYPE 1 ......Wk
 %TYPE 2.......Wd
 %TYPE 3.......Wf
 %TYPE 4.......Wc
 %TYPE 5.......We
 %TYPE 6.......Wj
+%----- Axes in BS 6841 -------------------------------
+%TYPE 1 ......Wb
+%TYPE 2.......Wc
+%TYPE 3.......Wd
+%TYPE 4.......We
+%TYPE 5.......Wf
+%TYPE 6.......Wg
+clear all
+clc
+global w;
+global hn;
+NmbrOfElements = 6;
 WeightFactorsStr = {'Wk','Wd','Wf','Wc','We','Wj'}';
+%                    Wk,  Wd,  Wf,  Wc,  We,  Wj Wb, Wg,
 % colors: magenta,cyan,red, green, blue, black
 LineColors       = {'m','c','r','g','b','x'}';
 Fs = 1000;          % 1kHz sample rate
 t = 0:1/Fs:1;      % 1 seconds @ 1kHz sample rate
 fo = 1; f1 = 400;   % Start at 10Hz, go up to 400Hz
 y = chirp(t,fo,10,f1)';
-plot(t,y');
-MyInput = y';
-InputSignal = cat(2,t',y);
-FilteredSignal = ISO2631(y,1,Fs);
-Kristian = FilteredSignal'; 
-plot(FilteredSignal);
+%**************************************************************************
+%-------------------- ISO2631 ---------------------------------------------
+%**************************************************************************
+%------------------- ISO2631 on Wk ----------------------------------------
 grid on;
+FilteredSignal = ISO2631(y,1,Fs);
 Freq = w/2*pi;
-semilogx(Freq,20*log10(hn),'m');hold on;
+semilogx(Freq,20*log10(hn),'m');
+hold on;
+%------------------- ISO2631 on Wd ----------------------------------------
 FilteredSignal = ISO2631(y,2,Fs);
 Freq = w/2*pi;
 semilogx(Freq,20*log10(hn),'c');
+
+%------------------- ISO2631 on Wf ----------------------------------------
 FilteredSignal = ISO2631(y,3,Fs);
 Freq = w/2*pi;
 semilogx(Freq,20*log10(hn),'r');
+%------------------- ISO2631 on Wc ----------------------------------------
 FilteredSignal = ISO2631(y,4,Fs);
 Freq = w/2*pi;
 semilogx(Freq,20*log10(hn),'g');
+%------------------- ISO2631 on We ----------------------------------------
 FilteredSignal = ISO2631(y,5,Fs);
 Freq = w/2*pi;
 semilogx(Freq,20*log10(hn),'b');
+%------------------- ISO2631 on Wj ----------------------------------------
 FilteredSignal = ISO2631(y,6,Fs);
 Freq = w/2*pi;
-semilogx(Freq,20*log10(hn),'k');
-%-------------------- BS 6841-----------------------------
-
+semilogx(Freq,20*log10(hn),'y');
+%**************************************************************************
+%-------------------- BS 6841----------------------------------------------
+%**************************************************************************
+%------------------- BS 6841 on Wb ----------------------------------------
 FilteredSignal = bs6841(y,1,Fs); % - TYPE 1 ......Wb
 Freq = w/2*pi;
-semilogx(Freq,20*log10(hn),':k');
-
+semilogx(Freq,20*log10(hn),'-.k');
+%------------------- BS 6841 on Wg ----------------------------------------
 FilteredSignal = bs6841(y,6,Fs); % - TYPE 6 ......Wg
 Freq = w/2*pi;
-semilogx(Freq,20*log10(hn),'-.k');
+semilogx(Freq,20*log10(hn),'--k');
 
+%**************************************************************************
+%-------------------- Format the legend and axis labels -------------------
+%**************************************************************************
+hleg1 = legend('ISO2631:Wk','BS6841/ISO2631:Wd','BS6841/ISO2631:Wf','BS6841/ISO2631:Wc','BS6841/ISO2631:We','ISO2631:Wj','BS6841:Wb','BS6841:Wg');
 
-hleg1 = legend('Wk','Wd','Wf','Wc','We','Wj','Wb','Wg');
-title('ISO2631 weightening frequency transfer functions');
+title('ISO2631 и BS 6841 предавателна тегловна функция');
 axis([0.01 1000 -30 10]);
-xlabel('Frequency (Hz)');
-ylabel('Gain (dB)');
+xlabel('Честота (Hz)');
+ylabel('Предаване (dB)');
 grid on;
 hold off;
-
-
+%**************************************************************************
+%-------------------- EOF -------------------------------------------------
+%**************************************************************************
