@@ -26,10 +26,12 @@ for ij=4:246
     %ride quality weighting factor
     B(ij) = 1.14*(( bb+ cc )/((dd +ee)*ff))^0.5; ;
 end
-plot(f(4:end),Bw(4:end));
-xlabel('frequency(hz)');
-ylabel('Bs-comfort Horizontal direction');
-title('sperling index frequency weughting curve ');
+% Freq = w/2*pi;
+% semilogx(Freq,20*log10(hn),'m');
+% plot(f(4:end),Bw(4:end));
+% xlabel('frequency(hz)');
+% ylabel('Bs-comfort Horizontal direction');
+% title('sperling index frequency weughting curve ');
 for a=1:3
     sum=0;sum2=0;
     [Pxx,w] = pwelch(signal(:,a),[],[],8192,fs);
@@ -40,12 +42,12 @@ for a=1:3
             Pxx2(ij)=2*Pxx(ij+1)*(Bw(ij)*Bw(ij));
         end
     end
-for ij=4:246
-    Pxx3(ij)=2*Pxx(ij+1)*(B(ij)*B(ij));
-end
-for ij=4:246
-    sum = Pxx2(ij)+sum;
-    sum2 =Pxx3(ij)+sum2;
+    for ij=4:246
+        Pxx3(ij)=2*Pxx(ij+1)*(B(ij)*B(ij));
+    end
+    for ij=4:246
+        sum = Pxx2(ij)+sum;
+        sum2 =Pxx3(ij)+sum2;
     end
     % A factor of 10000 is applied for conversion from m/s^2 to cm/s^2
     % 1000/8192 is df or the discrete frequency step used in integration
